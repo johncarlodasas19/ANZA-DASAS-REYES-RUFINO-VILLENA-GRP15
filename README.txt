@@ -1,6 +1,9 @@
-Campus Lost & Found - Final (Dasas)
+Campus Lost & Found -GROUP 15 ( THIS IS RUNNING AND WORKING WITHOUT AI MATCHING SO THIS IS OUR PROGRESS WEEK 8-9)
 ====================================
 
+(ONGOING- WE WLL JUST ADD FEATURES WHICH IS AI MATCHING AND OUR PROGRAM IS READY TO DEMO IN PRESENTATION AND WE WILL UPDATE THE PROGRESS IN WEEK 9-11)
+
+====================================
 This is a Flask-based Campus Lost & Found system with:
 - User registration and login.
 - Create, Read, Update, Delete (CRUD) for items.
@@ -21,7 +24,7 @@ How to run (Windows - Visual Studio / VS Code):
 6. Open in browser:
    http://127.0.0.1:5000
 
-Demo account:
+Demo account: (OR YOU CAN LOGIN VIA REGISTER AND LOGIN ACCOUTN)
 - Email: demo@school.edu
 - Password: password123
 
