@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <h4 class="card-title">Edit Item</h4>
+        <form method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input required name="title" class="form-control" value="{{ item.title }}">
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Description</label>
+            <textarea name="description" class="form-control" rows="3">{{ item.description }}</textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Status</label>
+            <select name="status" class="form-select">
+              <option value="lost" {% if item.status=='lost' %}selected{% endif %}>Lost</option>
+              <option value="found" {% if item.status=='found' %}selected{% endif %}>Found</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Replace Image (optional)</label>
+            <input type="file" name="image" accept="image/*" class="form-control">
+            {% if item.image_filename %}
+              <small class="text-muted">Current file: {{ item.image_filename }}</small>
+            {% endif %}
+          </div>
+          <div class="d-grid">
+            <button class="btn btn-primary">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

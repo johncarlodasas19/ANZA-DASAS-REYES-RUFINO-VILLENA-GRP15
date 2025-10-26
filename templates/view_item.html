@@ -1,0 +1,14 @@
+
+<!doctype html>
+<html><head><meta charset="utf-8"><title>View Item</title></head>
+<body>
+  <h1>{{ item.title }}</h1>
+  <p><strong>Status:</strong> {{ item.status }}</p>
+  <p><strong>Description:</strong> {{ item.description }}</p>
+  <p><strong>Posted by:</strong> {{ item.owner_email }}</p>
+  <a href="/item/{{ item.id }}/edit">Edit</a>
+  <form method="post" action="/item/{{ item.id }}/delete" style="display:inline">
+    <button type="submit">Delete</button>
+  </form>
+  <a href="/dashboard">Back</a>
+</body></html>

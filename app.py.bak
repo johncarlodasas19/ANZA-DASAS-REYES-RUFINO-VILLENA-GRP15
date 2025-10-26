@@ -1,0 +1,61 @@
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+
+app = Flask(__name__)
+app.secret_key = "secret123"  # required for session/flash messages
+
+# Dummy database simulation
+users = {}
+
+@app.route('/')
+def login_page():
+    return render_template('login.html')
+
+@app.route('/register')
+def register_page():
+    return render_template('register.html')
+
+@app.route('/dashboard')
+def dashboard():
+    if 'user' in session:
+        return render_template('dashboard.html', user=session['user'])
+    else:
+        flash("Please login first!", "error")
+        return redirect(url_for('login_page'))
+
+@app.route('/forgot')
+def forgot_password():
+    return render_template('forgot_password.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    email = request.form['email']
+    password = request.form['password']
+
+    if email in users and users[email] == password:
+        session['user'] = email
+        flash("Login successful!", "success")
+        return redirect(url_for('dashboard'))
+    else:
+        flash("Invalid credentials.", "error")
+        return redirect(url_for('login_page'))
+
+@app.route('/register_user', methods=['POST'])
+def register_user():
+    email = request.form['email']
+    password = request.form['password']
+
+    if email in users:
+        flash("Account already exists.", "error")
+    else:
+        users[email] = password
+        flash("Registration successful! You can now log in.", "success")
+    return redirect(url_for('login_page'))
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    flash("Logged out successfully.", "info")
+    return redirect(url_for('login_page'))
+
+if __name__ == '__main__':
+    app.run(debug=True)
